@@ -1,0 +1,87 @@
+mapping(bytes32 => bool) public queuedTransactions;
+
+
+function setexecuteTime{
+    require (isowner)//
+    uint256 executeTime = block.timestamp.add(delay);
+}
+constructor(unit delay){
+    delay = delay_;
+    admin = msg.sender;
+}
+
+function changeAdmin()
+
+function queueTransaction(address target,uint256 value,string memory signature,bytes memory data){
+    require(executeTime >= getBlockTimestamp() + delay, "timelock::");
+    bytes32 txHaxh = getTxHash(target, value);
+    queuedTransaction[txHash] = true;
+    return txHash;
+}
+
+
+
+function executeTransaction()
+    bytes32 txHash = getTxHash（target,value,signature,data,excuteTime）;
+    require(queuedTransactions[txHash],'Timelock')//检查交易是否在队列里头
+    require(getBlockTimestamp() >= executeTime）//交易是否达到执行时间
+   require(getBlockTimestamp() <= executeTime + GRACE_PERIOD, "Timelock::executeTransaction: Transaction is stale.");
+    queuedTransactions[txHash] = false;
+
+    bytes memory calldata;
+    if (bytes(signature).length == 0) {
+        calldata = data;
+    } else {
+        calldata = abi.encodePanked()
+    }
+    (bool success, bytes memory returnData) = target.call{value: value}(callData);
+        require(success, "Timelock::executeTransaction: Transaction execution reverted.");
+
+function getBlockTimestamp() public view returns (uint) {
+        return block.timestamp;
+
+
+function getTxHash(
+        address target,
+        uint value,
+        string memory signature,
+        bytes memory data,
+        uint executeTime
+    ) public pure returns (bytes32) {
+        return keccak256(abi.encode(target, value, signature, data, executeTime));
+        //使用 keccak256 对打包后的字节数组进行哈希，生成32字节的唯一标识符
+
+function isowner
+
+struct Order{
+    address owner;
+    uint256 price;
+}
+//nftList 是一个嵌套的映射（mapping），
+//从NFT合约地址 (address) 映射到另一个映射。第二个映射从代币ID (uint256) 映射到 Order 结构体。
+mapping（）public nftlist;
+
+
+fallback() external payable{}
+
+contract NFTSwap is IERC721Receiver{
+    function onERC721Received(
+        address 
+        address from,
+        uint tokenId,
+        bytes 
+    ) external override returns (bytes4){
+        return 
+    }
+
+function list(address _nftAddr)public{
+    IERC721 _nft = if 
+    require(_nft,getApproved（_tokenId）== );
+    //_nft是IERC721接口的一个实例，代表了指定的NFT合约。
+    _nft.safeTransferFrom(msg.sender,address(this),_tokenId);
+    //这是ERC721标准中用于安全转移NFT的函数。它确保在转移过程中调用onERC721Received（如果接收者是合约），
+    //以确认接收者能够处理ERC721代币。
+}
+function purchase(addresss ){
+    _nft.safeTransferFrom(address(this),msg.sender,_tokenId);
+}
