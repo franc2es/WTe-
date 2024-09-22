@@ -1,4 +1,5 @@
 import { WALLET_ADDRESS, sdk} from './utils/constants';
+import { WALLET_ADDRESS, sdk } from './utils/constants';
 
 const createOffer = async () => {
     
